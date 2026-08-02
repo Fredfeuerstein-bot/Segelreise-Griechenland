@@ -1,72 +1,47 @@
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sternwarte Emmental macht einen 3 monatigen Ausflug</title>
-
-    <style>
-        body {
-            font-family: monospace;
-            margin: 40px;
-            line-height: 1.6;
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        h1 {
-            background-color: #0033cc;
-            color: #ffff00;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-family: monospace;
-            margin-top: 20px;
-        }
-a {
-    background-color: yellow;
-    color: black;
-    padding: 10px 20px;
-    text-decoration: none;
-    border: 2px solid black;
-}
-        p {
-            font-family: monospace;
-            font-size: 1rem;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Sternwarte Emmental macht einen 3 Monatigen Ausflug</h1>
-
-    <h2>Falls du schauen möchtest wo wir sind dann drücke diesen Knopf! Aber nicht zu fest sonst geht dein Display in den Arsch!!!</h2>
-<a href="https://www.marinetraffic.com/en/ais/home/shipid:7710209/zoom:14" target="_blank">Hier sind wir</a>
-    <p>
-        RB 3000 und Tümmmel machen sich mit Sack und Pack und dem Faltvelo desgrauens auf den Weg Richtung Meer.
-    </p>
-<video autoplay muted loop playsinline width="800">
-    <source src="Tag1.mp4" type="video/mp4">
-</video>
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Segelschiff</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sternwarte Emmental macht einen 3 Monatigen Ausflug</title>
 
 <style>
+
 body{
-    margin:0;
-    min-height:2500px;
     font-family:monospace;
-    overflow-x:hidden;
+    margin:40px;
+    line-height:1.6;
     background:white;
+    color:black;
+    min-height:2500px;
+    overflow-x:hidden;
 }
 
-/* Boot */
+h1{
+    background:#0033cc;
+    color:yellow;
+    padding:20px;
+    margin-bottom:30px;
+}
+
+a{
+    display:inline-block;
+    background:yellow;
+    color:black;
+    padding:10px 20px;
+    border:2px solid black;
+    text-decoration:none;
+}
+
+video{
+    display:block;
+    margin-top:30px;
+    max-width:100%;
+    height:auto;
+}
+
+/* Papierboot */
 
 #boat{
     position:fixed;
@@ -125,40 +100,62 @@ body{
     font-size:28px;
     line-height:22px;
     white-space:nowrap;
-    color:black;
     pointer-events:none;
 }
 
 </style>
-</head>
 
+</head>
 <body>
+
+<h1>Sternwarte Emmental macht einen 3 Monatigen Ausflug</h1>
+
+<h2>
+Falls du schauen möchtest wo wir sind dann drücke diesen Knopf!
+Aber nicht zu fest sonst geht dein Display in den Arsch!!!
+</h2>
+
+<a href="https://www.marinetraffic.com/en/ais/home/shipid:7710209/zoom:14" target="_blank">
+Hier sind wir
+</a>
+
+<p>
+RB 3000 und Tümmmel machen sich mit Sack und Pack und dem Faltvelo des Grauens auf den Weg Richtung Meer.
+</p>
+
+<video
+    id="reisevideo"
+    width="800"
+    controls
+    autoplay
+    muted
+    loop
+    playsinline>
+
+    <source src="Tag1.mp4" type="video/mp4">
+
+    Dein Browser unterstützt dieses Video nicht.
+
+</video>
 
 <div id="boat">
 
 <svg viewBox="0 0 220 150">
 
-    <!-- Aussenform -->
-    <polyline points="25,45 75,120 145,120 195,45"/>
+<polyline points="25,45 75,120 145,120 195,45"/>
+<line x1="75" y1="120" x2="145" y2="120"/>
 
-    <!-- Boden -->
-    <line x1="75" y1="120" x2="145" y2="120"/>
+<line x1="25" y1="45" x2="110" y2="82"/>
+<line x1="195" y1="45" x2="110" y2="82"/>
+<line x1="75" y1="120" x2="110" y2="82"/>
+<line x1="145" y1="120" x2="110" y2="82"/>
 
-    <!-- grosse Diagonalen -->
-    <line x1="25" y1="45" x2="110" y2="82"/>
-    <line x1="195" y1="45" x2="110" y2="82"/>
-    <line x1="75" y1="120" x2="110" y2="82"/>
-    <line x1="145" y1="120" x2="110" y2="82"/>
+<polygon points="80,60 110,20 140,60"/>
 
-    <!-- mittleres Segel -->
-    <polygon points="80,60 110,20 140,60"/>
+<line x1="110" y1="20" x2="110" y2="82"/>
 
-    <!-- Mittellinie -->
-    <line x1="110" y1="20" x2="110" y2="82"/>
-
-    <!-- kleine Falten -->
-    <line x1="80" y1="60" x2="52" y2="52"/>
-    <line x1="140" y1="60" x2="168" y2="52"/>
+<line x1="80" y1="60" x2="52" y2="52"/>
+<line x1="140" y1="60" x2="168" y2="52"/>
 
 </svg>
 
@@ -169,6 +166,14 @@ body{
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 </div>
+
+<script>
+const video = document.getElementById("reisevideo");
+
+video.play().catch(err => {
+    console.log("Autoplay wurde vom Browser blockiert:", err);
+});
+</script>
 
 </body>
 </html>
