@@ -122,7 +122,7 @@ async function lade(){
     const tage={};
 
     media.forEach(file=>{
-        const m=file.name.match(/^Tag(\d+)\.(jpg|jpeg|png|mp4)$/i);
+        const m = file.name.match(/^Tag(\d+)\.(jpg|jpeg|png|mp4|mp3)$/i);
         if(!m) return;
         const nr=parseInt(m[1]);
         tage[nr]={typ:m[2].toLowerCase(),url:file.download_url};
@@ -154,19 +154,43 @@ async function lade(){
                 if(p.textContent) sec.appendChild(p);
             }
         }catch(e){}
+if (tage[nr].typ === "mp4") {
 
-        if(tage[nr].typ==="mp4"){
-            const v=document.createElement("video");
-            v.src=tage[nr].url;
-            v.controls=true;
-            v.style.maxWidth="100%";
-            sec.appendChild(v);
-        }else{
-            const img=document.createElement("img");
-            img.src=tage[nr].url;
-            img.alt="Tag "+nr;
-            sec.appendChild(img);
-        }
+    const video = document.createElement("video");
+
+    video.src = tage[nr].url;
+
+    video.controls = true;
+
+    video.style.maxWidth = "100%";
+
+    sec.appendChild(video);
+
+}
+else if (tage[nr].typ === "mp3") {
+
+    const audio = document.createElement("audio");
+
+    audio.src = tage[nr].url;
+
+    audio.controls = true;
+
+    audio.style.width = "100%";
+
+    sec.appendChild(audio);
+
+}
+else if (tage[nr].url) {
+
+    const img = document.createElement("img");
+
+    img.src = tage[nr].url;
+
+    img.alt = "Tag " + nr;
+
+    sec.appendChild(img);
+
+}
 
         container.appendChild(sec);
       });
